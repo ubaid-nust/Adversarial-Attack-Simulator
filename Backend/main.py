@@ -1,12 +1,16 @@
-# main.py
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.app_fgsm import app as fgsm_app
 
-# Create FastAPI app
+# Create main FastAPI app
 app = FastAPI(title="Adversarial Attack API")
 
-# CORS setup for your frontend
+# Mount FGSM app at root
+app.mount("/", fgsm_app)
+
+# Enable CORS for your Amplify frontend
 origins = ["https://main.d379q9b3vj57kv.amplifyapp.com"]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -14,11 +18,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Dummy /attack endpoint
-# Replace the body with your actual FGSM attack logic
-@app.post("/attack/")
-async def attack(file: UploadFile = File(...)):
-    contents = await file.read()
-    # Your FGSM attack code here using `contents`
-    return {"filename": file.filename, "message": "Attack executed successfully!"}
