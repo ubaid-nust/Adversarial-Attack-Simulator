@@ -34,7 +34,7 @@ export default function Home() {
     formData.append("epsilon", parseFloat(epsilon));
 
     try {
-      const response = await fetch("https://54.169.204.64/attack/", {
+      const response = await fetch("https://adversarial-attack-simulator.onrender.com/attack/", {
         method: "POST",
         body: formData,
       });
