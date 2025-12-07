@@ -23,4 +23,4 @@ app.add_middleware(
 )
 
 # ----- Mount your real app -----
-app.mount("/", fgsm_app)
+app.mount("/fgsm", fgsm_app)
