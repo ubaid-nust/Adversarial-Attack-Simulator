@@ -1,9 +1,10 @@
 from fastapi.middleware.cors import CORSMiddleware
 from app.app_fgsm import app
 
+# Only allow your deployed frontend URL
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://main.d379q9b3vj57kv.amplifyapp.com"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
