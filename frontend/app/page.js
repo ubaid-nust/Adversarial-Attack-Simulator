@@ -34,7 +34,7 @@ export default function Home() {
     formData.append("epsilon", parseFloat(epsilon));
 
     try {
-      const response = await fetch("http://localhost:8000/attack/", {
+      const response = await fetch("http://54.169.204.64:8000/attack/", {
         method: "POST",
         body: formData,
       });
