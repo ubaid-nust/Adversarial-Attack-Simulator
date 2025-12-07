@@ -8,7 +8,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ----- CORS -----
+# CORS
 origins = [
     "https://main.d379q9b3vj57kv.amplifyapp.com",
     "http://localhost:3000",
@@ -22,5 +22,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ----- Mount your real app -----
-app.mount("/fgsm", fgsm_app)
+# 👉 MERGE ROUTES, DO NOT MOUNT
+app.include_router(fgsm_app.router, prefix="/attack")
