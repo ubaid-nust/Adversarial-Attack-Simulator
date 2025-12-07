@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-};
+  output: 'export',     // <-- enables static export
+  trailingSlash: true,  // optional, ensures URLs end with '/'
+}
 
 export default nextConfig;
