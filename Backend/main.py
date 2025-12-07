@@ -2,14 +2,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.app_fgsm import app as fgsm_app
 
-# Create main FastAPI app
-app = FastAPI(title="Adversarial Attack API")
+app = FastAPI(
+    title="FGSM Attack API",
+    description="Backend for adversarial attack simulation",
+    version="1.0.0"
+)
 
-# Mount FGSM app at root
-app.mount("/", fgsm_app)
-
-# Enable CORS for your Amplify frontend
-origins = ["https://main.d379q9b3vj57kv.amplifyapp.com"]
+# ----- CORS -----
+origins = [
+    "https://main.d379q9b3vj57kv.amplifyapp.com",
+    "http://localhost:3000",
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,3 +21,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ----- Mount your real app -----
+app.mount("/", fgsm_app)
