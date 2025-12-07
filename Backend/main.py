@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from mangum import Mangum  # <--- IMPORTANT for Lambda
 from app.app_fgsm import app as fastapi_app
 
 # Create FastAPI application
@@ -17,6 +16,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Lambda handler
-handler = Mangum(app)
