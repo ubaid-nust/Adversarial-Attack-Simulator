@@ -20,8 +20,7 @@ export default function Home() {
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
-    if (!file) return; // ⛔ Prevents crash
-
+    if (!file) return;
     setImage(file);
     setCleanPreview(URL.createObjectURL(file));
   };
@@ -54,16 +53,19 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen py-10 flex flex-col items-center bg-gradient-to-b from-gray-100 to-gray-200">
-      <h1 className="text-4xl font-bold mb-10 text-gray-800">
+    <div className="min-h-screen py-10 px-4 flex flex-col items-center bg-gradient-to-b from-gray-100 to-gray-200">
+
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-800 text-center">
         FGSM Adversarial Attack Demo
       </h1>
 
-      <div className="bg-white w-full max-w-2xl shadow-xl rounded-2xl p-8 border border-gray-100">
-          <div className="p-4 mb-4 bg-blue-50 border-l-4 border-green-600 text-green-700 rounded">
-            This model is trained for <b>animal classification</b>.  
-            Please upload clear animal images for best results.
-          </div>
+      <div className="bg-white w-full max-w-2xl shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100">
+
+        <div className="p-4 mb-6 bg-blue-50 border-l-4 border-green-600 text-green-700 rounded text-sm sm:text-base">
+          This model is trained for <b>animal classification</b>.  
+          Please upload clear animal images for best results.
+        </div>
+
         <ImageUploader handleFileChange={handleFileChange} />
         <EpsilonSlider epsilon={epsilon} setEpsilon={setEpsilon} />
         <AttackButton onClick={runAttack} loading={loading} />

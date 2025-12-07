@@ -6,7 +6,8 @@ export default function AttackButton({ onClick, loading }) {
     <button
       onClick={onClick}
       disabled={loading}
-      className={`w-full py-3 rounded-xl text-white transition 
+      className={`w-full py-3 rounded-xl text-white transition text-center
+        text-base sm:text-lg
         ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
       `}
     >

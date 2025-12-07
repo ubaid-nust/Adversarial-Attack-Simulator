@@ -3,8 +3,8 @@ import React from "react";
 
 export default function EpsilonSlider({ epsilon, setEpsilon }) {
   return (
-    <div className="mb-6">
-      <label className="block mb-2 font-semibold text-gray-700">
+    <div className="mb-6 w-full">
+      <label className="block mb-2 font-semibold text-gray-700 text-sm sm:text-base">
         Epsilon: {epsilon}
       </label>
       <input
